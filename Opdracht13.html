@@ -4,23 +4,27 @@
   <script src="./robot-arm.js"></script>
   <script>
       var canvas = document.getElementById("canvas");
-      var arm = new RobotArm(canvas);
-      arm.randomLevel(1, 8);
-      arm.grab();
+      var robotArm = new RobotArm(canvas);
+
+      robotArm.randomLevel(1, 8);
+      robotArm.grab();
       var x = 9;
       var y = 9;
-      var color = arm.scan();
+      var color = robotArm.scan();
+
       while (color !== null) {
-        arm.grab();
-        color = arm.scan();
+        robotArm.grab();
+        color = robotArm.scan();
+
         if (color !== null) {
           for (var a = 0; a < x; a++) {
-            arm.moveRight();
+            robotArm.moveRight();
           }
+
           x--;
-          arm.drop();
+          robotArm.drop();
           for (var b = 0; b < y; b++) {
-            arm.moveLeft();
+            robotArm.moveLeft();
           }
           y--;
         }
